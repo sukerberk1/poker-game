@@ -7,7 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AFF8A9C52BC84A87009743B4 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AFF8A9C42BC84A87009743B4 /* main.cpp */; };
+		AFF8A9DB2BC84C9D009743B4 /* roundResolver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AFF8A9CB2BC84C9D009743B4 /* roundResolver.cpp */; };
+		AFF8A9DC2BC84C9D009743B4 /* player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AFF8A9CC2BC84C9D009743B4 /* player.cpp */; };
+		AFF8A9DD2BC84C9D009743B4 /* cycle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AFF8A9CF2BC84C9D009743B4 /* cycle.cpp */; };
+		AFF8A9DE2BC84C9D009743B4 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AFF8A9D02BC84C9D009743B4 /* main.cpp */; };
+		AFF8A9DF2BC84C9D009743B4 /* round.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AFF8A9D32BC84C9D009743B4 /* round.cpp */; };
+		AFF8A9E02BC84C9D009743B4 /* game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AFF8A9D42BC84C9D009743B4 /* game.cpp */; };
+		AFF8A9E12BC84C9D009743B4 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AFF8A9D52BC84C9D009743B4 /* main.cpp */; };
+		AFF8A9E22BC84C9D009743B4 /* deck.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AFF8A9D92BC84C9D009743B4 /* deck.cpp */; };
+		AFF8A9E32BC84C9D009743B4 /* card.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AFF8A9DA2BC84C9D009743B4 /* card.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -24,7 +32,19 @@
 
 /* Begin PBXFileReference section */
 		AFF8A9C12BC84A87009743B4 /* poker-game */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "poker-game"; sourceTree = BUILT_PRODUCTS_DIR; };
-		AFF8A9C42BC84A87009743B4 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		AFF8A9CB2BC84C9D009743B4 /* roundResolver.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = roundResolver.cpp; sourceTree = "<group>"; };
+		AFF8A9CC2BC84C9D009743B4 /* player.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = player.cpp; sourceTree = "<group>"; };
+		AFF8A9CD2BC84C9D009743B4 /* poker-game.sln */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "poker-game.sln"; sourceTree = "<group>"; };
+		AFF8A9CE2BC84C9D009743B4 /* poker-game.vcxproj.filters */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "poker-game.vcxproj.filters"; sourceTree = "<group>"; };
+		AFF8A9CF2BC84C9D009743B4 /* cycle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cycle.cpp; sourceTree = "<group>"; };
+		AFF8A9D02BC84C9D009743B4 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		AFF8A9D22BC84C9D009743B4 /* poker-game.vcxproj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "poker-game.vcxproj"; sourceTree = "<group>"; };
+		AFF8A9D32BC84C9D009743B4 /* round.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = round.cpp; sourceTree = "<group>"; };
+		AFF8A9D42BC84C9D009743B4 /* game.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = game.cpp; sourceTree = "<group>"; };
+		AFF8A9D52BC84C9D009743B4 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		AFF8A9D62BC84C9D009743B4 /* poker-game.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; path = "poker-game.xcodeproj"; sourceTree = "<group>"; };
+		AFF8A9D92BC84C9D009743B4 /* deck.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = deck.cpp; sourceTree = "<group>"; };
+		AFF8A9DA2BC84C9D009743B4 /* card.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = card.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,7 +61,19 @@
 		AFF8A9B82BC84A87009743B4 = {
 			isa = PBXGroup;
 			children = (
-				AFF8A9C32BC84A87009743B4 /* poker-game */,
+				AFF8A9DA2BC84C9D009743B4 /* card.cpp */,
+				AFF8A9CF2BC84C9D009743B4 /* cycle.cpp */,
+				AFF8A9D92BC84C9D009743B4 /* deck.cpp */,
+				AFF8A9D42BC84C9D009743B4 /* game.cpp */,
+				AFF8A9D52BC84C9D009743B4 /* main.cpp */,
+				AFF8A9CC2BC84C9D009743B4 /* player.cpp */,
+				AFF8A9D12BC84C9D009743B4 /* poker-game */,
+				AFF8A9CD2BC84C9D009743B4 /* poker-game.sln */,
+				AFF8A9D22BC84C9D009743B4 /* poker-game.vcxproj */,
+				AFF8A9CE2BC84C9D009743B4 /* poker-game.vcxproj.filters */,
+				AFF8A9D62BC84C9D009743B4 /* poker-game.xcodeproj */,
+				AFF8A9D32BC84C9D009743B4 /* round.cpp */,
+				AFF8A9CB2BC84C9D009743B4 /* roundResolver.cpp */,
 				AFF8A9C22BC84A87009743B4 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -54,12 +86,17 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		AFF8A9C32BC84A87009743B4 /* poker-game */ = {
+		AFF8A9D12BC84C9D009743B4 /* poker-game */ = {
 			isa = PBXGroup;
 			children = (
-				AFF8A9C42BC84A87009743B4 /* main.cpp */,
+				AFF8A9D02BC84C9D009743B4 /* main.cpp */,
 			);
 			path = "poker-game";
+			sourceTree = "<group>";
+		};
+		AFF8A9D72BC84C9D009743B4 /* Products */ = {
+			isa = PBXGroup;
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -107,6 +144,12 @@
 			mainGroup = AFF8A9B82BC84A87009743B4;
 			productRefGroup = AFF8A9C22BC84A87009743B4 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = AFF8A9D72BC84C9D009743B4 /* Products */;
+					ProjectRef = AFF8A9D62BC84C9D009743B4 /* poker-game.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				AFF8A9C02BC84A87009743B4 /* poker-game */,
@@ -119,7 +162,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AFF8A9C52BC84A87009743B4 /* main.cpp in Sources */,
+				AFF8A9DF2BC84C9D009743B4 /* round.cpp in Sources */,
+				AFF8A9DB2BC84C9D009743B4 /* roundResolver.cpp in Sources */,
+				AFF8A9E22BC84C9D009743B4 /* deck.cpp in Sources */,
+				AFF8A9E32BC84C9D009743B4 /* card.cpp in Sources */,
+				AFF8A9E02BC84C9D009743B4 /* game.cpp in Sources */,
+				AFF8A9DD2BC84C9D009743B4 /* cycle.cpp in Sources */,
+				AFF8A9DE2BC84C9D009743B4 /* main.cpp in Sources */,
+				AFF8A9E12BC84C9D009743B4 /* main.cpp in Sources */,
+				AFF8A9DC2BC84C9D009743B4 /* player.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
