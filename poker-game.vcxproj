@@ -128,13 +128,22 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="card.cpp" />
-    <ClCompile Include="cycle.cpp" />
-    <ClCompile Include="deck.cpp" />
-    <ClCompile Include="game.cpp" />
+    <ClCompile Include="Cycle.cpp" />
+    <ClCompile Include="Deck.cpp" />
+    <ClCompile Include="Game.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="player.cpp" />
-    <ClCompile Include="round.cpp" />
-    <ClCompile Include="roundResolver.cpp" />
+    <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Round.cpp" />
+    <ClCompile Include="RoundResolver.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Card.h" />
+    <ClInclude Include="Cycle.h" />
+    <ClInclude Include="Deck.h" />
+    <ClInclude Include="Game.h" />
+    <ClInclude Include="Player.h" />
+    <ClInclude Include="Round.h" />
+    <ClInclude Include="RoundResolver.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

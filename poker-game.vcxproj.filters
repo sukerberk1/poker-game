@@ -21,23 +21,46 @@
     <ClCompile Include="card.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="deck.cpp">
+    <ClCompile Include="Deck.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="game.cpp">
+    <ClCompile Include="Player.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="round.cpp">
+    <ClCompile Include="Round.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="cycle.cpp">
+    <ClCompile Include="Game.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="player.cpp">
+    <ClCompile Include="RoundResolver.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="roundResolver.cpp">
+    <ClCompile Include="Cycle.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Card.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Deck.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Round.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RoundResolver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Cycle.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
