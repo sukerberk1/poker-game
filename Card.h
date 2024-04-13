@@ -12,13 +12,14 @@ private:
 
 public:
 	Card(int power, char color);
-	void display();
-	void displayDebug();
 
 	short getPower();
 	char getColor();
 	static char* getValidColors();
 	static short* getValidPowers();
+
+	void display();
+	void displayDebug();
 };
 
 #endif // !CARD

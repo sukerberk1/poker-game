@@ -1,3 +1,4 @@
+#include <iostream>
 #include "Card.h"
 
 Card::Card(int power, char color) {
@@ -10,16 +11,20 @@ Card::Card(int power, char color) {
 	}
 }
 
+/*
+	S - spades
+	C - clubs
+	H - hearts
+	D - diamonds
+*/
 const char Card::validColors[4] = {'S', 'C', 'H', 'D'};
 
 bool Card::isColorValid(char color) {
-	/*
-		S - spades
-		C - clubs
-		H - hearts
-		D - diamonds
-	*/
-	return !(color == 'S' || color == 'C' || color == 'H' || color == 'D');
+	for (int i = 0; i < 4; i++) {
+		if (validColors[i] == color)
+			return true;
+	}
+	return false;
 }
 
 bool Card::isPowerValid(short power) {
@@ -39,4 +44,8 @@ short Card::getPower() {
 }
 char Card::getColor() {
 	return this->color;
+}
+
+void Card::displayDebug() {
+	std::cout << "Card: { Color: " << this->color << ", Power: " << this->power << "}" << std::endl;
 }
