@@ -5,8 +5,12 @@
 
 int main()
 {
-    std::cout << "Hello World!\n";
-    std::cout << "Dupa"; // testing how git repo push works
+    std::cout << "!!! UWAGA !!!\n";
+    std::cout << "POKER TO GRA HAZARDOWA. GRAJ ODPOWIEDZIALNIE.\n"; 
+    std::cout << "TYLKO OD 18 ROKU ZYCIA.\n\n";
+    std::cout << "CO CHCESZ ZROBIC, GRACZU?\n";
+    std::cout << "[1] - CHCE ZARYZYKOWAC WSZYSTKO, ZEBY ZDOBYC NIESKONCZENIE WIELE PIENIEDZY GRAJAC W GRE POKER.\n[2] - SPENIALEM. ZABIERZCIE MNIE STAD, DOPOKI JESZCZE MAM JAKIES PIENIADZE...";
+    
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu

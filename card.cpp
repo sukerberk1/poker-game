@@ -26,7 +26,12 @@ bool Card::isColorValid(char color) {
 	}
 	return false;
 }
-
+/*	14 - ace 
+	13 - king 
+	12 - queen 
+	11 - jopek
+	10 - 2 - numbers
+*/ 
 bool Card::isPowerValid(short power) {
 	return power >= 2 && power <= 14;
 }
