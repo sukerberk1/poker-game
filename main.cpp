@@ -10,6 +10,7 @@ int main()
     std::cout << "TYLKO OD 18 ROKU ZYCIA.\n\n";
     std::cout << "CO CHCESZ ZROBIC, GRACZU?\n";
     std::cout << "[1] - CHCE ZARYZYKOWAC WSZYSTKO, ZEBY ZDOBYC NIESKONCZENIE WIELE PIENIEDZY GRAJAC W GRE POKER.\n[2] - SPENIALEM. ZABIERZCIE MNIE STAD, DOPOKI JESZCZE MAM JAKIES PIENIADZE...";
+    std::cout << "test push \n";
     
 }
 
