@@ -1,6 +1,9 @@
 #include "Deck.h"
 #include <iostream>
 #include <algorithm>
+#include <random>       // std::default_random_engine
+
+using namespace std;
 
 Deck::Deck() {
     // Tworzenie talii 52 kart
@@ -14,7 +17,8 @@ Deck::Deck() {
 }
 
 void Deck::shuffle() {
-    std::random_shuffle(cards.begin(), cards.end());
+    long seed = std::chrono::system_clock::now().time_since_epoch().count();
+    shuffle (cards.begin(), cards.end(), std::default_random_engine(seed));
 }
 
 Card Deck::drawCard() {
@@ -24,20 +28,20 @@ Card Deck::drawCard() {
 }
 
 void Deck::display() {
-    for (const Card& card : cards) {
-        card.displayDebug();
+    for (Card card : cards) {
+        card.display();
     }
 }
 
 int main() {
     Deck deck;
-    std::cout << "Shuffling the deck..." << std::endl;
+    cout << "Shuffling the deck..." << endl;
     deck.shuffle();
 
-    std::cout << "Drawing and displaying 5 cards:" << std::endl;
+    cout << "Drawing and displaying 5 cards:" << endl;
     for (int i = 0; i < 5; ++i) {
         Card drawnCard = deck.drawCard();
-        std::cout << "Card " << i+1 << ": ";
+        cout << "Card " << i+1 << ": ";
         drawnCard.displayDebug();
     }
 

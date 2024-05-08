@@ -5,7 +5,7 @@ class Card {
 private:
 	short power;
 	char color;
-	static const char validColors[4];
+	
 
 	bool isColorValid(char color);
 	bool isPowerValid(short power);
@@ -15,6 +15,7 @@ public:
 
 	short getPower();
 	char getColor();
+    static const char validColors[4];
 	static char* getValidColors();
 	static short* getValidPowers();
 
