@@ -15,10 +15,9 @@ int Player::takeCash(int bet) {
 	return player.cash - bet;
 }
 
-Card Deck::drawFirstCard() {
+/*Card Deck::drawFirstCard() {
 	Card firstCard = cards.back();
 	cards.pop_back();
-	
 	return firstCard;
 }
 
@@ -27,10 +26,30 @@ Card Deck::drawSecondCard() {
 	cards.pop_back();
 	return secondCard;
 }
+
+Card Player::takeCard() {
+	Deck::drawFirstCard();
+	hand.back();
+	Deck::drawSecondCard();
+	hand.back();
+}*/
+
+Card Deck::drawCard() {
+	Card drawnCard = cards.back();
+	cards.pop_back();
+	return drawnCard;
+}
+
+
+
 int main() {
-	Deck drawningCards;
+	Deck drawingCards;
 	std::cout << "Current money in your wallet: " << player.cash << std::endl;
-	std::cout << "Your cards: " << Deck::drawFirstCard() <<" " << Deck::drawSecondCard() << std::endl;
+	std::cout << "Cards in your hand: \n";
+	for (int i = 0; i < 2; i++) {
+		Card drawnCard = drawingCards.drawCard();
+		drawnCard.displayDebug();
+	}
 	
 	return 0;
 };
