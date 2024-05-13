@@ -1,38 +1,22 @@
 #include "Player.h"
-#include "deck.cpp"
 #include <iostream>
 
-//Have to add drawing cards
-Player player;
-int Player::addCash(int winningPot) {
-	player.cash = player.cash + winningPot; //adding money to player's cash from winning pot
-	return player.cash;
-}
-int Player::takeCash(int bet) {
-	/*std::cout << "How much money you want to bet?\n";
-	std::cin >> bet;
-	return player.cash - bet;*/
-	return player.cash - bet;
+
+Player::Player(int cash) {
+	if (cash >= 0) {
+		this->cash = cash;
+	}
+	else {
+		throw;
+	}
 }
 
-/*Card Deck::drawFirstCard() {
-	Card firstCard = cards.back();
-	cards.pop_back();
-	return firstCard;
+void Player::addCash(unsigned int winningPot) {
+	this -> cash +=  winningPot; //adding money to player's cash from winning pot (winning pot in round)
 }
-
-Card Deck::drawSecondCard() {
-	Card secondCard = cards.back();
-	cards.pop_back();
-	return secondCard;
+int Player::subsractCash(unsigned int bet) {
+	return cash -= bet; //betting in round, bet variable is in round
 }
-
-Card Player::takeCard() {
-	Deck::drawFirstCard();
-	hand.back();
-	Deck::drawSecondCard();
-	hand.back();
-}*/
 
 Card Deck::drawCard() {
 	Card drawnCard = cards.back();
@@ -40,16 +24,19 @@ Card Deck::drawCard() {
 	return drawnCard;
 }
 
+Card* Player::getCards() {
+	Card card1 = Deck::drawCard();
+	Card card2 = Deck::drawCard();
+}
+
+void Player::giveCards(Card c1, Card c2) {
+	Player::hand[0] = {c1};
+	Player::hand[1] = {c2};
+}
+
+void Player::resetHand() {
+	Player::hand[0] = {0, 0};
+	Player::hand[1] = {0, 0};
+}
 
 
-int main() {
-	Deck drawingCards;
-	std::cout << "Current money in your wallet: " << player.cash << std::endl;
-	std::cout << "Cards in your hand: \n";
-	for (int i = 0; i < 2; i++) {
-		Card drawnCard = drawingCards.drawCard();
-		drawnCard.displayDebug();
-	}
-	
-	return 0;
-};
