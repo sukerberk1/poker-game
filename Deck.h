@@ -15,6 +15,8 @@ public:
     void shuffle();
     Card drawCard();
     void display();
+    Card drawFirstCard();
+    Card drawSecondCard();
 };
 
 #endif // DECK_H
