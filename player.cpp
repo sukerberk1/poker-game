@@ -27,6 +27,7 @@ Card Deck::drawCard() {
 Card* Player::getCards() {
 	Card card1 = Deck::drawCard();
 	Card card2 = Deck::drawCard();
+	Player::giveCards(card1, card2);
 }
 
 void Player::giveCards(Card c1, Card c2) {
