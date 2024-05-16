@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 #include "Card.h"
 
 Card::Card(int power, char color) {
@@ -67,6 +68,47 @@ short Card::getPower() {
 }
 char Card::getColor() {
 	return this->color;
+}
+
+void Card::display()
+{
+	std::string colorName;
+	switch (this->color)
+	{
+	case 'S':
+		colorName = "Spades"; 
+		break;
+	case 'H':
+		colorName = "Hearts"; 
+		break;
+	case 'D':
+		colorName = "Diamonds"; 
+		break;
+	case 'C':
+		colorName = "Clubs"; 
+		break;
+	default:
+		break;
+	}
+	std::string powerName;
+	switch (this->power)
+	{
+	case 11:
+		powerName = "Jester";
+		break;
+	case 12:
+		powerName = "Queen";
+		break;
+	case 13:
+		powerName = "King";
+		break;
+	case 14:
+		powerName = "Ace";
+		break;
+	default:
+		powerName = std::to_string(this->power);
+	}
+	std::cout << powerName << " of " << colorName << std::endl;
 }
 
 void Card::displayDebug() {
