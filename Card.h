@@ -10,6 +10,8 @@ private:
 	bool isColorValid(char color);
 	bool isPowerValid(short power);
 
+	/* Private constructor for ommiting validation for placeholder purposes */
+	Card();
 public:
 	Card(int power, char color);
 
@@ -18,6 +20,8 @@ public:
     static const char validColors[4];
 	static char* getValidColors();
 	static short* getValidPowers();
+	static Card PLACEHOLDER();
+	static bool isPlaceholder(Card card);
 
 	void display();
 	void displayDebug();

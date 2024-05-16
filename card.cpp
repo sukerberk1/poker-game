@@ -11,6 +11,15 @@ Card::Card(int power, char color) {
 	}
 }
 
+/* Placeholder constructor */
+Card::Card() : power(0), color('P') {}
+
+Card Card::PLACEHOLDER() { return Card(); }
+
+bool Card::isPlaceholder(Card card) {
+	return card.getPower() == 0 && card.getColor() == 'P';
+}
+
 /*
 	S - spades
 	C - clubs
@@ -42,6 +51,15 @@ char* Card::getValidColors() {
 		validColorsCopy[i] = validColors[i];
 	}
 	return validColorsCopy;
+}
+
+short* Card::getValidPowers() {
+	short* validPowers = new short[13];
+	for (short i = 0; i < 13; i++)
+	{
+		validPowers[i] = i+2;
+	}
+	return validPowers;
 }
 
 short Card::getPower() {
