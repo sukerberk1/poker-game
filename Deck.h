@@ -8,13 +8,14 @@
 class Deck {
 private:
     std::vector<Card> cards;
-
+    
 public:
     Deck();
 
     void shuffle();
     Card drawCard();
     void display();
+    void displayDebug();
 };
 
 #endif // DECK_H
