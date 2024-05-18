@@ -29,17 +29,18 @@ bool Card::isPlaceholder(Card card) {
 */
 const char Card::validColors[4] = {'S', 'C', 'H', 'D'};
 
-bool Card::isColorValid(char color) {
+bool Card::isColorValid(char color) //TEN DEBIL CO TO ROBIŁ TO CHYBA NIE UMIE WSKAŹNIKÓW(ZRESZTĄ JA TEŻ NIE, DLATEGO KODUJE W POWERSHELL). WEŹ TU SZYMON UŻYK: std:find, bo mnie krew zalewa: https://stackoverflow.com/questions/19215027/check-if-element-found-in-array-c
+{ 
 	for (int i = 0; i < 4; i++) {
 		if (validColors[i] == color)
-			return true;
+		return true;
 	}
 	return false;
 }
 /*	14 - ace 
 	13 - king 
 	12 - queen 
-	11 - jopek
+	11 - walet
 	10 - 2 - numbers
 */ 
 bool Card::isPowerValid(short power) {
@@ -70,7 +71,8 @@ char Card::getColor() {
 	return this->color;
 }
 
-void Card::display()
+
+string displayColorName (char color)
 {
 	std::string colorName;
 	switch (this->color)
@@ -90,6 +92,11 @@ void Card::display()
 	default:
 		break;
 	}
+	return colorName;
+}
+
+string displayPowerName(short power)
+{
 	std::string powerName;
 	switch (this->power)
 	{
@@ -108,7 +115,12 @@ void Card::display()
 	default:
 		powerName = std::to_string(this->power);
 	}
-	std::cout << powerName << " of " << colorName << std::endl;
+	return powerName;
+}
+
+void Card::display()
+{
+	std::cout << this->displayPowerName(this->power) << " of " << this->displayColorName(this->color) << std::endl;
 }
 
 void Card::displayDebug() {

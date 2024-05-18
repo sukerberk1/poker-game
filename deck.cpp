@@ -3,7 +3,7 @@
 #include <algorithm>
 #include <random>
 
-using namespace std;
+using namespace std; ///WYWAL TO BO TO JEST KRYMINAŁ. IMPORTOWANIE CAŁEGO NAMESPACE JEST BEZ SENSU.
 
 Deck::Deck() {
     char* validColors = Card::getValidColors();

@@ -19,14 +19,17 @@ Card* Player::getCards() {
 }
 
 void Player::giveCard(Card card) {
+
 	if (Card::isPlaceholder(hand[0])) {
 		hand[0] = card;
-		return;
+		return; // LALALALALA a Licnzik rozkazów na procesorze tańczy jak cyganie
 	}
 	if (Card::isPlaceholder(hand[1])) {
 		hand[1] = card;
-		return;
+		return; // LALALALALA a Licnzik rozkazów na procesorze tańczy jak cyganie
 	}
+	//Tę funkcję trzeba zrobić inaczej, bo te returny są błędem, ale też nie do końca rozumiem kod.
+
 	// Loop could be utilized here, but for readability it is left as is.
 }
 

@@ -10,6 +10,9 @@ private:
 	bool isColorValid(char color);
 	bool isPowerValid(short power);
 
+	string displayColorName(char color);
+	string displayPowerName(short power);
+
 	/* Private constructor for ommiting validation for placeholder purposes */
 	Card();
 public:
