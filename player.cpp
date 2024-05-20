@@ -2,28 +2,29 @@
 #include <iostream>
 
 
-Player::Player(unsigned int cash) : cash(cash) {
-	this->hand = new Card[2]{ Card::PLACEHOLDER(), Card::PLACEHOLDER() };
-}
+Player::Player(std::string name) : 
+	cash(0), 
+	name(name),
+	hand(std::array<Card, 2> { Card::PLACEHOLDER(), Card::PLACEHOLDER() }) 
+{ }
 
 void Player::addCash(unsigned int winningPot) {
-	this -> cash +=  winningPot; //adding money to player's cash from winning pot (winning pot in round)
+	cash +=  winningPot; //adding money to player's cash from winning pot (winning pot in round)
 }
 int Player::subtractCash(unsigned int bet) {
 	return cash -= bet; //betting in round, bet variable is in round
 }
 
-Card* Player::getCards() {
-	Card* handCopy = new Card[2]{ hand[0], hand[1] };
-	return handCopy;
+std::array<Card, 2> Player::getCards() {
+	return hand;
 }
 
 void Player::giveCard(Card card) {
-	if (Card::isPlaceholder(hand[0])) {
+	if (Card::isPlaceholder(hand.at(0))) {
 		hand[0] = card;
 		return;
 	}
-	if (Card::isPlaceholder(hand[1])) {
+	if (Card::isPlaceholder(hand.at(1))) {
 		hand[1] = card;
 		return;
 	}
@@ -31,7 +32,7 @@ void Player::giveCard(Card card) {
 }
 
 void Player::resetCards() {
-	hand = new Card[2]{ Card::PLACEHOLDER(), Card::PLACEHOLDER() };
+	hand.fill(Card::PLACEHOLDER());
 }
 
 

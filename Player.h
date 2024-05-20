@@ -2,11 +2,13 @@
 #ifndef PLAYER
 #include <iostream>
 #include <vector>
+#include <array>
 #include "Deck.h"
+
 class Player
 {
 public:
-	Player(unsigned int cash);
+	Player(std::string name);
 	/* Adds cash for the player */
 	void addCash(unsigned int x);
 	/* Takes cash away from the player */
@@ -15,14 +17,12 @@ public:
 	void giveCard(Card card);
 	/* Resets cards of a given player. Internally sets the underying pointer to the new array of 2 card placeholders */
 	void resetCards();
-	/* 
-	Returns a pointer to the copy of the hand array. Note that it points to the copy, 
-	therefore modification of the returned array does not affect the player
-	*/
-	Card* getCards();
+	/*  Returns a copy of player's cards. */
+	std::array<Card, 2> getCards();
 	
 private:
-	Card* hand;
+	std::string name;
+	std::array<Card, 2> hand;
 	unsigned int cash;
 };
 #endif // !PLAYER
