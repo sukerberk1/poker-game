@@ -29,13 +29,8 @@ public:
 	Function designed to be used together with displaying the current place of cards on the table.
 	*/
 	std::array<Card, 5> placeTableCards(short turnNumber);
-	/*
-	0 - initial betting cycle (e.g. 5 coins blind by convention)
-	1 - betting cycle after 3 cards are revealed
-	2 - betting cycle after 4th card is revealed
-	3 - betting cycle after 5th card is revealed
-	*/
-	void gatherBetsFromPlayers(short turnNumber);
+	/* Function gathering bets from players, subtracting cash from them & adding it to the pool */
+	void gatherBetsFromPlayers();
 	/*
 	Resolves round returning the pointer to the player that won. This function cashes out the prize into the winners' account
 	*/
