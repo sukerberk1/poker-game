@@ -35,4 +35,7 @@ void Player::resetCards() {
 	hand.fill(Card::PLACEHOLDER());
 }
 
+std::string Player::getName() {
+	return name;
+}
 

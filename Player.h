@@ -19,7 +19,7 @@ public:
 	void resetCards();
 	/*  Returns a copy of player's cards. */
 	std::array<Card, 2> getCards();
-	
+	std::string getName();
 private:
 	std::string name;
 	std::array<Card, 2> hand;
