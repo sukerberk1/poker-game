@@ -34,7 +34,7 @@ private:
 	/* Removes folded players from the roundPlayers. Folded players are computed based on playerBets and roundPlayers fields. */
 	void removeFoldedPlayers();
 	bool areBetsEqual();
-	void playerBettingDisplay(unsigned int* betAmount, std::string playerName);
+	PlayerAction playerBettingDisplay(unsigned int* betAmount, std::string playerName);
 public:
 	BettingCycle(std::vector<Player*>* roundPlayers);
 	void getBets();
