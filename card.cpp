@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <algorithm>
 #include "Card.h"
 
 Card::Card(int power, char color) {
@@ -8,6 +9,7 @@ Card::Card(int power, char color) {
 		this->power = power;
 	}
 	else {
+		std::cout << "Card constructor misuse. See card class for details.";
 		throw;
 	}
 }
@@ -21,20 +23,10 @@ bool Card::isPlaceholder(Card card) {
 	return card.getPower() == 0 && card.getColor() == 'P';
 }
 
-/*
-	S - spades
-	C - clubs
-	H - hearts
-	D - diamonds
-*/
-const char Card::validColors[4] = {'S', 'C', 'H', 'D'};
+
 
 bool Card::isColorValid(char color) {
-	for (int i = 0; i < 4; i++) {
-		if (validColors[i] == color)
-			return true;
-	}
-	return false;
+	return std::find(getValidColors().begin(), getValidColors().end(), color) == getValidColors().end();
 }
 /*	14 - ace 
 	13 - king 
@@ -43,23 +35,22 @@ bool Card::isColorValid(char color) {
 	10 - 2 - numbers
 */ 
 bool Card::isPowerValid(short power) {
-	return power >= 2 && power <= 14;
+	return power >= getValidPowers().at(0) && power <= getValidPowers().at(13);
 }
 
-char* Card::getValidColors() {
-	char* validColorsCopy = new char[4];
-	for (int i = 0; i < 4; i++) {
-		validColorsCopy[i] = validColors[i];
-	}
-	return validColorsCopy;
+/*
+	S - spades
+	C - clubs
+	H - hearts
+	D - diamonds
+*/
+std::array<char,4> Card::getValidColors() {
+	std::array<char, 4> validColors {'S', 'C', 'H', 'D'};
+	return validColors;
 }
 
-short* Card::getValidPowers() {
-	short* validPowers = new short[13];
-	for (short i = 0; i < 13; i++)
-	{
-		validPowers[i] = i+2;
-	}
+std::array<short, 13> Card::getValidPowers() {
+	std::array<short, 13> validPowers { 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 };
 	return validPowers;
 }
 

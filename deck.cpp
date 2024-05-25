@@ -1,17 +1,18 @@
 #include "Deck.h"
 #include <iostream>
 #include <algorithm>
+#include <array>
 #include <random>
 
 using namespace std;
 
 Deck::Deck() {
-    char* validColors = Card::getValidColors();
-    short* validPowers = Card::getValidPowers();
+    std::array<char, 4> validColors = Card::getValidColors();
+    std::array<short, 13> validPowers = Card::getValidPowers();
     // Tworzenie talii 52 kart
-    for (int powerIndex = 0; powerIndex < 13; powerIndex++) {
-        for (int colorIndex = 0; colorIndex < 4; ++colorIndex) {
-            Card card = Card(validPowers[powerIndex], validColors[colorIndex]);
+    for (short power : validPowers) {
+        for (char color : validColors) {
+            Card card = Card(power, color);
             cards.push_back(card);
         }
     }

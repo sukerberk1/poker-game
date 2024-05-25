@@ -1,5 +1,6 @@
 #pragma once
 #ifndef CARD
+#include <array>
 
 class Card {
 private:
@@ -17,9 +18,8 @@ public:
 
 	short getPower();
 	char getColor();
-    static const char validColors[4];
-	static char* getValidColors();
-	static short* getValidPowers();
+	static std::array<char, 4> getValidColors();
+	static std::array<short, 13> getValidPowers();
 	static Card PLACEHOLDER();
 	static bool isPlaceholder(Card card);
 
