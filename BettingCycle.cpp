@@ -1,50 +1,74 @@
 #include "BettingCycle.h"
 
-Bet::Bet(Player* player, unsigned int bet) {
+Bet::Bet(Player* player) {
 	this->player = player;
-	this->bet = bet;
-	this->inGame = true;
+	this->bet = 0;
+	this->folded = false;
 }
 
-//BettingCycle::BettingCycle(std::vector<Player*>* roundPlayers) {
-//	this->
-//}
+void Bet::fold() {
+	this->folded = true;
+}
 
-void BettingCycle::getBets() {
-	/* Initial turn - players are betting */
-	for (Player* player : *roundPlayers) {
-		std::optional<Bet> bet = getPlayerBet(player);
-		if (bet.has_value())
-			playerBets.push_back(bet.value());
+unsigned int Bet::getAmount() {
+	return this->bet;
+}
+
+bool Bet::isFolded() {
+	return this->folded;
+}
+
+void Bet::askPlayerForBet(unsigned int minAmount) {
+	//TODO!
+}
+
+BettingCycle::BettingCycle(std::vector<Player*>* roundPlayers) 
+{
+	this->roundPlayers = roundPlayers;
+	this->turn = 0;
+	for (Player* p : *roundPlayers)
+	{
+		this->playerBets.push_back(Bet(p));
 	}
-	/* Next turns - players must all have equal bets at the end of this billing cycle */
-	do {
-		// TODO!
-	} while (!areBetsEqual());
-	/* End - remove folded players from the round */
-	removeFoldedPlayers();
 }
 
-std::optional<Bet> BettingCycle::getPlayerBet(Player* player) {
-	unsigned int betAmount;
-	playerBettingDisplay(&betAmount, player->getName());
-	if (betAmount == 0)
-		return std::nullopt;
-	return std::optional{ Bet(player, betAmount) };
+void BettingCycle::run() {
+	do
+	{
+		turn++;
+		Bet* currentBet = getCurrentBet();
+		if (currentBet->isFolded())
+			continue;
+		currentBet->askPlayerForBet(getPreviousBet()->getAmount());
+		
+	} while (!areBetsEstablished());
+	removeFoldedPlayersFromRound();
 }
 
-// 	Function checks if every player in roundPlayers has their bets in playerBets vector. If there is a player in roundPlayers
-//  and there is no bet from that player in playerBets, they should be removed. 
-void BettingCycle::removeFoldedPlayers() {
-	
+/* Bets are considered established when all are equal, all the players have made the decision, and a player had a chance to raise after the full circle */
+bool BettingCycle::areBetsEstablished() {
+	return turn > roundPlayers->size() && areBetsEqual();
 }
 
-void BettingCycle::playerBettingDisplay(unsigned int* betAmount, std::string playerName) {
-
+void BettingCycle::removeFoldedPlayersFromRound() {
+	//TODO!
 }
 
-// This function checks if all bets in playerBets have the same bet value.
 bool BettingCycle::areBetsEqual() {
-	
+	//TODO!
 	return false;
+}
+
+unsigned int BettingCycle::getTotalBetAmount() {
+	//TODO!
+	return 0;
+}
+
+Bet* BettingCycle::getCurrentBet() {
+
+}
+
+Bet* BettingCycle::getPreviousBet() {
+	//TODO!
+	return nullptr;
 }

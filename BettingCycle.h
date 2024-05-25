@@ -1,7 +1,6 @@
 #pragma once
 #ifndef BETTING_CYCLE_H
 #include <vector>
-#include <optional>
 #include "Player.h"
 
 enum PlayerAction {
@@ -14,10 +13,15 @@ class Bet {
 private:
 	Player* player;
 	unsigned int bet;
-	bool inGame;
+	bool folded;
 public:
-	Bet(Player* player, unsigned int bet);
+	Bet(Player* player);
+	bool isFolded();
+	void fold();
+	unsigned int getAmount();
+	void askPlayerForBet(unsigned int minAmount);
 };
+
 
 /*
 Betting cycle is defined as a turn of betting that takes place between each card reveal.
@@ -26,19 +30,21 @@ class BettingCycle
 {
 private:
 	std::vector<Player*>* roundPlayers;
-	unsigned int totalBets;
-	unsigned int currentBet;
+	/* playerBets is initialized to contain active (unfolded) bets with bet amount equal to 0 */
 	std::vector<Bet> playerBets;
+	int turn;
 
-	std::optional<Bet> getPlayerBet(Player* player);
-	/* Removes folded players from the roundPlayers. Folded players are computed based on playerBets and roundPlayers fields. */
-	void removeFoldedPlayers();
+	Bet* getPreviousBet();
+	Bet* getCurrentBet();
 	bool areBetsEqual();
-	PlayerAction playerBettingDisplay(unsigned int* betAmount, std::string playerName);
+	bool areBetsEstablished();
+	/* Removes folded players from the roundPlayers. Affects round's state */
+	void removeFoldedPlayersFromRound();
+	
 public:
 	BettingCycle(std::vector<Player*>* roundPlayers);
-	void getBets();
-	unsigned int getTotalBets();
+	void run();
+	unsigned int getTotalBetAmount();
 };
 
 #endif // !BETTING_CYCLE_H
