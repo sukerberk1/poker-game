@@ -65,7 +65,8 @@ unsigned int BettingCycle::getTotalBetAmount() {
 }
 
 Bet* BettingCycle::getCurrentBet() {
-
+	//TODO!
+	return nullptr;
 }
 
 Bet* BettingCycle::getPreviousBet() {
