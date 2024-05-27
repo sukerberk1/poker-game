@@ -93,6 +93,10 @@ void BettingCycle::run(std::vector<Player>& players) {
     std::cout << "Wszyscy gracze wyrównali swoje zakłady." << std::endl;
 }
 unsigned int BettingCycle::getTotalBetAmount() {
-	//TODO!
-	return 0;
+    int totalBetAmount = 0;
+    for (Player& player : players) {
+        totalBetAmount += askPlayerForBet(player); 
+    }
+    return totalBetAmount;
+	
 }
