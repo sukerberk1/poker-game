@@ -1,4 +1,50 @@
 #include "BettingCycle.h"
+#include <iostream>
+#include <algorithm>
+
+int BettingCycle::getCurrentBet() const {
+    return currentBet;
+}
+
+int BettingCycle::getPreviousBet() const {
+    return previousBet;
+}
+
+void BettingCycle::setCurrentBet(int bet) {
+    previousBet = currentBet;
+    currentBet = bet;
+}
+
+void BettingCycle::setPreviousBet(int bet) {
+    previousBet = bet;
+}
+
+int BettingCycle::askPlayerForBet(Player& player) {
+    int betAmount;
+    std::cout << player.getName() << ", ile chcesz obstawić? ";
+    std::cin >> betAmount;
+    setPreviousBet(getCurrentBet());
+    setCurrentBet(betAmount);
+    player.setCurrentBet(betAmount); // Ustawienie aktualnego zakładu gracza
+    return betAmount;
+}
+
+void BettingCycle::removeFoldedPlayersFromRound(std::vector<Player>& players) {
+    players.erase(
+        std::remove_if(players.begin(), players.end(), [](Player& player) {
+            return player.hasFolded();
+        }),
+        players.end()
+    );
+}
+
+bool BettingCycle::areBetsEqual(const std::vector<Player>& players) {
+    if (players.empty()) return true;
+    int firstBet = players.front().getCurrentBet();
+    return std::all_of(players.begin(), players.end(), [firstBet](const Player& player) {
+        return player.getCurrentBet() == firstBet;
+    });
+}
 
 Bet::Bet(Player* player) {
 	this->player = player;
@@ -18,9 +64,6 @@ bool Bet::isFolded() {
 	return this->folded;
 }
 
-void Bet::askPlayerForBet(unsigned int minAmount) {
-	//TODO!
-}
 
 BettingCycle::BettingCycle(std::vector<Player*>* roundPlayers) 
 {
@@ -32,44 +75,24 @@ BettingCycle::BettingCycle(std::vector<Player*>* roundPlayers)
 	}
 }
 
-void BettingCycle::run() {
-	do
-	{
-		turn++;
-		Bet* currentBet = getCurrentBet();
-		if (currentBet->isFolded())
-			continue;
-		currentBet->askPlayerForBet(getPreviousBet()->getAmount());
-		
-	} while (!areBetsEstablished());
-	removeFoldedPlayersFromRound();
-}
+void BettingCycle::run(std::vector<Player>& players) {
+    bool betsEqual = false;
 
-/* Bets are considered established when all are equal, all the players have made the decision, and a player had a chance to raise after the full circle */
-bool BettingCycle::areBetsEstablished() {
-	return turn > roundPlayers->size() && areBetsEqual();
-}
+    while (!betsEqual) {
+        for (Player& player : players) {
+            if (!player.hasFolded()) {
+                int betAmount = askPlayerForBet(player);
+                player.setCurrentBet(betAmount);
+            }
+        }
+        
+        removeFoldedPlayersFromRound(players);
+        betsEqual = areBetsEqual(players);
+    }
 
-void BettingCycle::removeFoldedPlayersFromRound() {
-	//TODO!
+    std::cout << "Wszyscy gracze wyrównali swoje zakłady." << std::endl;
 }
-
-bool BettingCycle::areBetsEqual() {
-	//TODO!
-	return false;
-}
-
 unsigned int BettingCycle::getTotalBetAmount() {
 	//TODO!
 	return 0;
-}
-
-Bet* BettingCycle::getCurrentBet() {
-	//TODO!
-	return nullptr;
-}
-
-Bet* BettingCycle::getPreviousBet() {
-	//TODO!
-	return nullptr;
 }

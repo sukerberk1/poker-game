@@ -35,7 +35,22 @@ void Player::resetCards() {
 	hand.fill(Card::PLACEHOLDER());
 }
 
-std::string Player::getName() {
-	return name;
+std::string Player::getName() const {
+    return name;
 }
 
+bool Player::hasFolded() const {
+    return folded;
+}
+
+int Player::getCurrentBet() const {
+    return currentBet;
+}
+
+void Player::setCurrentBet(int bet) {
+    currentBet = bet;
+}
+
+void Player::fold() {
+    folded = true;
+}
