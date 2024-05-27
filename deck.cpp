@@ -4,8 +4,6 @@
 #include <array>
 #include <random>
 
-using namespace std;
-
 Deck::Deck() {
     std::array<char, 4> validColors = Card::getValidColors();
     std::array<short, 13> validPowers = Card::getValidPowers();
