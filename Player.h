@@ -19,17 +19,11 @@ public:
 	void resetCards();
 	/*  Returns a copy of player's cards. */
 	std::array<Card, 2> getCards();
-    std::string getName() const;
-    bool hasFolded() const;
-    int getCurrentBet() const;
-    void setCurrentBet(int bet);
-    void fold();
+	std::string getName();
 private:
 	std::string name;
 	std::array<Card, 2> hand;
 	unsigned int cash;
-    bool folded = false;
-    int currentBet = 0;
 };
 #endif // !PLAYER
 
