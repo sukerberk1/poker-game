@@ -5,11 +5,10 @@
 #include <random>
 
 Deck::Deck() {
-    std::array<char, 4> validColors = Card::getValidColors();
-    std::array<short, 13> validPowers = Card::getValidPowers();
+    std::cout << "Creating deck\n";
     // Tworzenie talii 52 kart
-    for (short power : validPowers) {
-        for (char color : validColors) {
+    for (short power : Card::getValidPowers()) {
+        for (char color : Card::getValidColors()) {
             Card card = Card(power, color);
             cards.push_back(card);
         }

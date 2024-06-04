@@ -19,7 +19,8 @@ public:
 	bool isFolded();
 	void fold();
 	unsigned int getAmount();
-	void askPlayerForBet(unsigned int minAmount);
+	Player* getPlayerPointer();
+	void askPlayerForAction(unsigned int minBetAmount);
 };
 
 
@@ -32,13 +33,19 @@ private:
 	std::vector<Player*>* roundPlayers;
 	/* playerBets is initialized to contain active (unfolded) bets with bet amount equal to 0 */
 	std::vector<Bet> playerBets;
+	/* Variable acting as index for players betting counting */
 	int turn;
 
 	Bet* getPreviousBet();
 	Bet* getCurrentBet();
+	/* Function checks whether all active (not folded) bets are equal */
 	bool areBetsEqual();
+	/* 
+	Function checks whether betting is finished in current cycle - thus, checks for equality using areBetsEqual()
+	and checks if all players had a chance to bet or raise.
+	*/
 	bool areBetsEstablished();
-	/* Removes folded players from the roundPlayers. Affects round's state */
+	/* Removes folded players from the roundPlayers. Affects round's state using roundPlayers vector pointer */
 	void removeFoldedPlayersFromRound();
 	
 public:

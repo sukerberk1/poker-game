@@ -11,12 +11,16 @@ Player::Player(std::string name) :
 void Player::addCash(unsigned int winningPot) {
 	cash +=  winningPot; //adding money to player's cash from winning pot (winning pot in round)
 }
-int Player::subtractCash(unsigned int bet) {
+unsigned int Player::takeCash(unsigned int bet) {
 	return cash -= bet; //betting in round, bet variable is in round
 }
 
 std::array<Card, 2> Player::getCards() {
 	return hand;
+}
+
+unsigned int Player::getCash() {
+	return cash;
 }
 
 void Player::giveCard(Card card) {
@@ -39,3 +43,17 @@ std::string Player::getName() {
 	return name;
 }
 
+void Player::displayDebug() {
+	std::cout << "Player: { name: " << name << " , cash: " << cash << std::endl;
+	std::cout << "Hand cards: " << std::endl; 
+	hand[0].displayDebug();
+	hand[1].displayDebug();
+}
+
+void Player::display() {
+	std::cout << "Player: " << name << std::endl << std::endl;
+	std::cout << "Cash: " << cash << std::endl;
+	std::cout << "Cards:" << std::endl;
+	hand[0].display();
+	hand[1].display();
+}

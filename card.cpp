@@ -26,7 +26,8 @@ bool Card::isPlaceholder(Card card) {
 
 
 bool Card::isColorValid(char color) {
-	return std::find(getValidColors().begin(), getValidColors().end(), color) == getValidColors().end();
+	std::array<char, 4> colors = getValidColors();
+	return !(std::find(colors.begin(), colors.end(), color) == colors.end());
 }
 /*	14 - ace 
 	13 - king 
@@ -35,7 +36,7 @@ bool Card::isColorValid(char color) {
 	10 - 2 - numbers
 */ 
 bool Card::isPowerValid(short power) {
-	return power >= getValidPowers().at(0) && power <= getValidPowers().at(13);
+	return power >= getValidPowers().at(0) && power <= getValidPowers().at(12);
 }
 
 /*
@@ -63,6 +64,10 @@ char Card::getColor() {
 
 void Card::display()
 {
+	if (Card::isPlaceholder(*this)) {
+		std::cout << "[No card in this slot]" << std::endl;
+		return;
+	}
 	std::string colorName;
 	switch (this->color)
 	{

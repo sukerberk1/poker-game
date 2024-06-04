@@ -1,4 +1,4 @@
-#include "BettingCycle.h"
+﻿#include "BettingCycle.h"
 
 Bet::Bet(Player* player) {
 	this->player = player;
@@ -18,8 +18,31 @@ bool Bet::isFolded() {
 	return this->folded;
 }
 
-void Bet::askPlayerForBet(unsigned int minAmount) {
-	//TODO!
+Player* Bet::getPlayerPointer() {
+	return this->player;
+}
+
+//TODO: refactor to support PlayerAction enum and wyjebać goto
+void Bet::askPlayerForAction(unsigned int minBetAmount) {
+	this->player->display();
+	std::cout << "Your balance: " << this->player->getCash() << std::endl;
+	std::cout << "You must now bet at least " << minBetAmount << std::endl;
+	std::cout << "![Bet 69 to fold]" << std::endl;
+	checkpoint:
+	unsigned int betAmount;
+	std::cout << "Place your bet: ";
+	std::cin >> betAmount;
+	std::cout << std::endl;
+	if (betAmount == 69) {
+		fold();
+		return;
+	}
+	if (betAmount > player->getCash()) {
+		std::cout << "You dont have such money! Try placing your bet again\n";
+		goto checkpoint;
+	}
+	player->takeCash(betAmount - this->bet);
+	this->bet = betAmount;
 }
 
 BettingCycle::BettingCycle(std::vector<Player*>* roundPlayers) 
@@ -35,12 +58,12 @@ BettingCycle::BettingCycle(std::vector<Player*>* roundPlayers)
 void BettingCycle::run() {
 	do
 	{
-		turn++;
 		Bet* currentBet = getCurrentBet();
 		if (currentBet->isFolded())
 			continue;
-		currentBet->askPlayerForBet(getPreviousBet()->getAmount());
-		
+		unsigned int prevBetAmount = getPreviousBet()->getAmount();
+		currentBet->askPlayerForAction(prevBetAmount);
+		turn++;
 	} while (!areBetsEstablished());
 	removeFoldedPlayersFromRound();
 }
@@ -51,29 +74,52 @@ bool BettingCycle::areBetsEstablished() {
 }
 
 void BettingCycle::removeFoldedPlayersFromRound() {
-	//TODO!
+	for (Bet bet : playerBets) {
+		if (bet.isFolded())
+			roundPlayers->erase(std::find(roundPlayers->begin(), roundPlayers->end(), bet.getPlayerPointer()));
+	}
 }
 
 bool BettingCycle::areBetsEqual() {
-	//TODO!
-	return false;
+	unsigned int betAmount = 0;
+	for (Bet bet : playerBets) {
+		if (!bet.isFolded()) {
+			betAmount = bet.getAmount();
+			break;
+		}
+	}
+	for (Bet bet : playerBets) {
+		if (bet.isFolded())
+			continue;
+		if (bet.getAmount() != betAmount)
+			return false;
+	}
+	return true;
 }
 
 unsigned int BettingCycle::getTotalBetAmount() {
     int totalBetAmount = 0;
-    for (Player& player : players) {
-        totalBetAmount += askPlayerForBet(player); 
+    for (Bet bet : playerBets) {
+        totalBetAmount += bet.getAmount(); 
     }
     return totalBetAmount;
 	
 }
 
 Bet* BettingCycle::getCurrentBet() {
-	//TODO!
-	return nullptr;
+	int currentIndex = turn % playerBets.size();
+	return &(playerBets.at(currentIndex));
 }
 
 Bet* BettingCycle::getPreviousBet() {
-	//TODO!
-	return nullptr;
+	int currentIndex = turn % playerBets.size();
+	int prevIndex;
+
+	if (currentIndex == 0) {
+		prevIndex = playerBets.size() - 1;
+	}
+	else {
+		prevIndex = currentIndex - 1;
+	}
+	return &(playerBets.at(prevIndex));
 }

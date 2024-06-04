@@ -2,18 +2,32 @@
 //
 
 #include <iostream>
-#include "Deck.h"
-#include "Card.h"
+#include <vector>
+#include "Player.h"
+#include "BettingCycle.h"
 
 int main()
 {
-    std::cout << "!!! UWAGA !!!\n";
-    std::cout << "POKER TO GRA HAZARDOWA. GRAJ ODPOWIEDZIALNIE.\n"; 
-    std::cout << "TYLKO OD 18 ROKU ZYCIA.\n\n";
-    std::cout << "CO CHCESZ ZROBIC, GRACZU?\n";
-    std::cout << "[1] - CHCE ZARYZYKOWAC WSZYSTKO, ZEBY ZDOBYC NIESKONCZENIE WIELE PIENIEDZY GRAJAC W GRE POKER.\n[2] - SPENIALEM. ZABIERZCIE MNIE STAD, DOPOKI JESZCZE MAM JAKIES PIENIADZE...";
-    Deck deck = Deck();
-    deck.displayDebug();
+    //std::cout << "!!! UWAGA !!!\n";
+    //std::cout << "POKER TO GRA HAZARDOWA. GRAJ ODPOWIEDZIALNIE.\n"; 
+    //std::cout << "TYLKO OD 18 ROKU ZYCIA.\n\n";
+    //std::cout << "CO CHCESZ ZROBIC, GRACZU?\n";
+    //std::cout << "[1] - CHCE ZARYZYKOWAC WSZYSTKO, ZEBY ZDOBYC NIESKONCZENIE WIELE PIENIEDZY GRAJAC W GRE POKER.\n[2] - SPENIALEM. ZABIERZCIE MNIE STAD, DOPOKI JESZCZE MAM JAKIES PIENIADZE...";
+
+    Deck d = Deck();
+    d.shuffle();
+
+    Player playerOne = Player("Maciek");
+    playerOne.addCash(100);
+    Player playerTwo = Player("Krzysiek");
+    playerTwo.addCash(100);
+    std::vector<Player*> players;
+    players.push_back(&playerOne);
+    players.push_back(&playerTwo);
+    BettingCycle cycle = BettingCycle(&players);
+    cycle.run();
+    std::cout<<"Total amount bet in this cycle: " << cycle.getTotalBetAmount();
+    system("pause");
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
