@@ -3,12 +3,6 @@
 #include <vector>
 #include "Player.h"
 
-enum PlayerAction {
-	FOLD,
-	CALL,
-	RAISE
-};
-
 class Bet {
 private:
 	Player* player;
@@ -20,7 +14,8 @@ public:
 	void fold();
 	unsigned int getAmount();
 	Player* getPlayerPointer();
-	void askPlayerForAction(unsigned int minBetAmount);
+	void askPlayerForAction(std::array<Card, 5> tableCards, unsigned int minBetAmount);
+	void displayDebug();
 };
 
 
@@ -31,6 +26,7 @@ class BettingCycle
 {
 private:
 	std::vector<Player*>* roundPlayers;
+	std::array<Card, 5>* tableCards;
 	/* playerBets is initialized to contain active (unfolded) bets with bet amount equal to 0 */
 	std::vector<Bet> playerBets;
 	/* Variable acting as index for players betting counting */
@@ -49,7 +45,7 @@ private:
 	void removeFoldedPlayersFromRound();
 	
 public:
-	BettingCycle(std::vector<Player*>* roundPlayers);
+	BettingCycle(std::vector<Player*>* roundPlayers, std::array<Card, 5>* tableCards);
 	void run();
 	unsigned int getTotalBetAmount();
 };

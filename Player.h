@@ -12,6 +12,7 @@ private:
 	std::array<Card, 2> hand;
 	unsigned int cash;
 public:
+	Player();
 	Player(std::string name);
 	/* Adds cash for the player */
 	void addCash(unsigned int x);

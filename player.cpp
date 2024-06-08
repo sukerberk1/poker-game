@@ -1,8 +1,14 @@
 #include "Player.h"
 #include <iostream>
 
+//TODO: fix this auto constructor ?
+Player::Player() : 
+	cash(0),
+	name("Player"),
+	hand(std::array<Card, 2> { Card::PLACEHOLDER(), Card::PLACEHOLDER() })
+{ }
 
-Player::Player(std::string name) : 
+Player::Player(std::string name) :
 	cash(0), 
 	name(name),
 	hand(std::array<Card, 2> { Card::PLACEHOLDER(), Card::PLACEHOLDER() }) 

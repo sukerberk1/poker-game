@@ -1,4 +1,5 @@
 ﻿#include "BettingCycle.h"
+#include "Display.h"
 
 Bet::Bet(Player* player) {
 	this->player = player;
@@ -22,31 +23,54 @@ Player* Bet::getPlayerPointer() {
 	return this->player;
 }
 
-//TODO: refactor to support PlayerAction enum and wyjebać goto
-void Bet::askPlayerForAction(unsigned int minBetAmount) {
-	this->player->display();
-	std::cout << "Your balance: " << this->player->getCash() << std::endl;
-	std::cout << "You must now bet at least " << minBetAmount << std::endl;
-	std::cout << "![Bet 69 to fold]" << std::endl;
-	checkpoint:
-	unsigned int betAmount;
-	std::cout << "Place your bet: ";
-	std::cin >> betAmount;
-	std::cout << std::endl;
-	if (betAmount == 69) {
-		fold();
+//TODO: refactor this long ahh function
+void Bet::askPlayerForAction(std::array<Card, 5> tableCards, unsigned int minBetAmount) {
+	std::vector<std::string> options { "CALL", "RAISE", "FOLD" };
+	int currentChoiceIdx = 0;
+	std::string finalChoice = "";
+	do {
+		Display::clear();
+		std::cout << "Current Cards on the table: " << std::endl;
+		for (Card card : tableCards) {
+			if (Card::isPlaceholder(card))
+				std::cout << "[CARD UNREVEALED]" << std::endl;
+			else
+				card.display();
+		}
+		this->player->display();
+		std::cout << "To CALL you must bet at least " << minBetAmount << std::endl;
+		finalChoice = Display::optionChoiceInterface(options, currentChoiceIdx);
+	} while (finalChoice.size() == 0);
+
+	if (finalChoice == "FOLD") {
+		this->fold();
 		return;
 	}
-	if (betAmount > player->getCash()) {
-		std::cout << "You dont have such money! Try placing your bet again\n";
-		goto checkpoint;
+	unsigned int wannaBetAmount = 0;
+	if (finalChoice == "CALL") {
+		wannaBetAmount = minBetAmount;
 	}
-	player->takeCash(betAmount - this->bet);
-	this->bet = betAmount;
+	else if (finalChoice == "RAISE") {
+		std::cout << "What is your desired bet? ";
+		std::cin >> wannaBetAmount;
+	}
+	if (player->getCash() < wannaBetAmount) {
+		std::cout << "You may not bet this amount since your balance is only " << player->getCash() << std::endl;
+		system("pause");
+		return askPlayerForAction(tableCards, minBetAmount); // this call is a workaround for coming back to the loop
+	}
+	player->takeCash(wannaBetAmount - this->bet);
+	this->bet = wannaBetAmount;
 }
 
-BettingCycle::BettingCycle(std::vector<Player*>* roundPlayers) 
+void Bet::displayDebug()
 {
+	std::cout << "Bet: player " << player->getName() << "; bet: " << this->bet << "; fold: " << this->folded << std::endl;
+}
+
+BettingCycle::BettingCycle(std::vector<Player*>* roundPlayers, std::array<Card, 5>* tableCards) 
+{
+	this->tableCards = tableCards;
 	this->roundPlayers = roundPlayers;
 	this->turn = 0;
 	for (Player* p : *roundPlayers)
@@ -61,8 +85,7 @@ void BettingCycle::run() {
 		Bet* currentBet = getCurrentBet();
 		if (currentBet->isFolded())
 			continue;
-		unsigned int prevBetAmount = getPreviousBet()->getAmount();
-		currentBet->askPlayerForAction(prevBetAmount);
+		currentBet->askPlayerForAction(*tableCards, getPreviousBet()->getAmount());
 		turn++;
 	} while (!areBetsEstablished());
 	removeFoldedPlayersFromRound();
@@ -83,10 +106,10 @@ void BettingCycle::removeFoldedPlayersFromRound() {
 bool BettingCycle::areBetsEqual() {
 	unsigned int betAmount = 0;
 	for (Bet bet : playerBets) {
-		if (!bet.isFolded()) {
-			betAmount = bet.getAmount();
-			break;
-		}
+		if (bet.isFolded())
+			continue;
+		betAmount = bet.getAmount();
+		break;
 	}
 	for (Bet bet : playerBets) {
 		if (bet.isFolded())
