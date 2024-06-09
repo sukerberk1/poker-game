@@ -11,9 +11,9 @@ private:
 	bool isColorValid(char color);
 	bool isPowerValid(short power);
 
-	/* Private constructor for ommiting validation for placeholder purposes */
-	Card();
 public:
+	/* Private constructor for ommiting validation for placeholder purposes. May not be used to create valid cards */
+	Card();
 	Card(int power, char color);
 
 	short getPower();

@@ -2,6 +2,7 @@
 #include <iostream>
 #include <string>
 #include "Round.h"
+#include "Display.h"
 
 Game::Game(int initialCash) : 
 	playersArr(nullptr), 
@@ -54,7 +55,5 @@ void Game::run()
 	while (true) {
 		Round round = Round(playersToVec());
 		round.run();
-		Player* winner = round.resolveRound();
-		winner->addCash(round.getPool());
 	}
 }

@@ -57,7 +57,7 @@ void Player::displayDebug() {
 }
 
 void Player::display() {
-	std::cout << "Player: " << name << std::endl << std::endl;
+	std::cout << "Player: " << name << std::endl;
 	std::cout << "Cash: " << cash << std::endl;
 	std::cout << "Cards:" << std::endl;
 	hand[0].display();

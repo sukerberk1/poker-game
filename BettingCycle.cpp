@@ -23,22 +23,16 @@ Player* Bet::getPlayerPointer() {
 	return this->player;
 }
 
-//TODO: refactor this long ahh function
 void Bet::askPlayerForAction(std::array<Card, 5> tableCards, unsigned int minBetAmount) {
 	std::vector<std::string> options { "CALL", "RAISE", "FOLD" };
 	int currentChoiceIdx = 0;
 	std::string finalChoice = "";
 	do {
 		Display::clear();
-		std::cout << "Current Cards on the table: " << std::endl;
-		for (Card card : tableCards) {
-			if (Card::isPlaceholder(card))
-				std::cout << "[CARD UNREVEALED]" << std::endl;
-			else
-				card.display();
-		}
+		Display::showTableCards(tableCards);
 		this->player->display();
-		std::cout << "To CALL you must bet at least " << minBetAmount << std::endl;
+		std::cout << "You have bet already " << this->bet << " in this turn." << std::endl;
+		std::cout << "To CALL you must bet at least " << minBetAmount << std::endl << std::endl;
 		finalChoice = Display::optionChoiceInterface(options, currentChoiceIdx);
 	} while (finalChoice.size() == 0);
 
@@ -53,10 +47,15 @@ void Bet::askPlayerForAction(std::array<Card, 5> tableCards, unsigned int minBet
 	else if (finalChoice == "RAISE") {
 		std::cout << "What is your desired bet? ";
 		std::cin >> wannaBetAmount;
+		if (wannaBetAmount < minBetAmount) {
+			std::cout << "You did not raise the bet...";
+			Display::awaitAcknowledge();
+			return askPlayerForAction(tableCards, minBetAmount);
+		}
 	}
 	if (player->getCash() < wannaBetAmount) {
 		std::cout << "You may not bet this amount since your balance is only " << player->getCash() << std::endl;
-		system("pause");
+		Display::awaitAcknowledge();
 		return askPlayerForAction(tableCards, minBetAmount); // this call is a workaround for coming back to the loop
 	}
 	player->takeCash(wannaBetAmount - this->bet);
@@ -85,6 +84,7 @@ void BettingCycle::run() {
 		Bet* currentBet = getCurrentBet();
 		if (currentBet->isFolded())
 			continue;
+		Display::announceBet(currentBet->getPlayerPointer());
 		currentBet->askPlayerForAction(*tableCards, getPreviousBet()->getAmount());
 		turn++;
 	} while (!areBetsEstablished());
@@ -93,7 +93,7 @@ void BettingCycle::run() {
 
 /* Bets are considered established when all are equal, all the players have made the decision, and a player had a chance to raise after the full circle */
 bool BettingCycle::areBetsEstablished() {
-	return turn > roundPlayers->size() && areBetsEqual();
+	return turn >= roundPlayers->size() && areBetsEqual();
 }
 
 void BettingCycle::removeFoldedPlayersFromRound() {
@@ -135,14 +135,12 @@ Bet* BettingCycle::getCurrentBet() {
 }
 
 Bet* BettingCycle::getPreviousBet() {
+	std::cout << "Searching for previous bet" << std::endl;
 	int currentIndex = turn % playerBets.size();
-	int prevIndex;
-
-	if (currentIndex == 0) {
-		prevIndex = playerBets.size() - 1;
+	int prevIndex = currentIndex == 0 ? playerBets.size() - 1 : currentIndex - 1;
+	while (playerBets.at(prevIndex).isFolded()) {
+		prevIndex = prevIndex == 0 ? playerBets.size() - 1 : prevIndex - 1;
 	}
-	else {
-		prevIndex = currentIndex - 1;
-	}
+	std::cout << "Prev bet found" << std::endl;
 	return &(playerBets.at(prevIndex));
 }

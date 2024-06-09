@@ -1,6 +1,7 @@
 #include "Round.h"
 #include "BettingCycle.h"
-
+#include "FigureMatcher.h"
+#include "Display.h"
 
 Round::Round(std::vector<Player*> players) 
 	: tableCards({ Card::PLACEHOLDER(), Card::PLACEHOLDER(), Card::PLACEHOLDER(), Card::PLACEHOLDER(), Card::PLACEHOLDER() }) 
@@ -47,8 +48,21 @@ void Round::gatherBetsFromPlayers() {
 }
 
 Player* Round::resolveRound() {
-	//TODO!
-	return players.at(0);
+	std::vector<Player*> regardedPlayers(players);
+	for (FigureMatcher matcher : FigureMatcher::getAllMatchersDescending()) {
+		std::vector<Player*> thisMatchWinners; 
+		for (Player* player : regardedPlayers) {
+			if (matcher.doesMatch(tableCards, player->getCards()))
+				thisMatchWinners.push_back(player);
+		}
+		if (thisMatchWinners.size() > 0) {
+			regardedPlayers = std::vector<Player*>(thisMatchWinners);
+		}
+	}
+	if (regardedPlayers.size() == 1) 
+		return regardedPlayers[0];
+	else 
+		return FigureMatcher::resolveHighCard(regardedPlayers);
 }
 
 unsigned int Round::getPool()
@@ -65,4 +79,7 @@ void Round::run()
 		turnNumber++;
 	}
 	this->gatherBetsFromPlayers(); // last betting turn
+	Player* winner = resolveRound();
+	Display::announceWinner(winner, pool);
+	winner->addCash(pool);
 }

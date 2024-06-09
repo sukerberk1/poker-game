@@ -132,21 +132,21 @@
     <ClCompile Include="BettingCycle.cpp" />
     <ClCompile Include="Deck.cpp" />
     <ClCompile Include="Display.cpp" />
+    <ClCompile Include="FigureMatcher.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Round.cpp" />
-    <ClCompile Include="RoundResolver.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Card.h" />
     <ClInclude Include="BettingCycle.h" />
     <ClInclude Include="Deck.h" />
     <ClInclude Include="Display.h" />
+    <ClInclude Include="FigureMatcher.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Round.h" />
-    <ClInclude Include="RoundResolver.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

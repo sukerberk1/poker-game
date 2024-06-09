@@ -1,7 +1,8 @@
 #include "Display.h"
 #include <iostream>
 #include <cstdlib>
-#include <conio.h>
+#include <stdio.h>
+#include <conio.h> //! Linux does not work with that
 
 #define KEY_UP    72
 #define KEY_DOWN  80
@@ -15,6 +16,11 @@ void Display::clear()
 #else
     std::system("clear");
 #endif
+}
+
+void Display::awaitAcknowledge()
+{
+    getchar();
 }
 
 std::string Display::optionChoiceInterface(std::vector<std::string> options, int& chosenIdx)
@@ -39,4 +45,30 @@ std::string Display::optionChoiceInterface(std::vector<std::string> options, int
         break;
     }
     return "";
+}
+
+void Display::showTableCards(std::array<Card, 5> tableCards)
+{
+    std::cout << "Current Cards on the table: " << std::endl;
+    for (Card card : tableCards) {
+        if (Card::isPlaceholder(card))
+            std::cout << "[CARD UNREVEALED]" << std::endl;
+        else
+            card.display();
+    }
+    std::cout << std::endl;
+}
+
+void Display::announceBet(Player* player)
+{
+    clear();
+    std::cout << player->getName() <<  " will be betting now...\n";
+    awaitAcknowledge();
+}
+
+void Display::announceWinner(Player* player, int wonAmount) 
+{
+    clear();
+    std::cout << player->getName() << " is the winner of this round! \nCongrats you won " << wonAmount;
+    awaitAcknowledge();
 }

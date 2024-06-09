@@ -1,5 +1,6 @@
 #pragma once
 #ifndef ROUND_H
+#define ROUND_H
 #include <vector>
 #include <array>
 #include "Player.h"

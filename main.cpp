@@ -4,11 +4,7 @@
 #include <iostream>
 #include "Game.h"
 #include <string>
-
-void change(std::string* strPtr) {
-    std::string chuj = "dupa";
-    strPtr = &chuj;
-}
+#include "FigureMatcher.h"
 
 int main()
 {
@@ -16,11 +12,10 @@ int main()
     //std::cout << "POKER TO GRA HAZARDOWA. GRAJ ODPOWIEDZIALNIE.\n"; 
     //std::cout << "TYLKO OD 18 ROKU ZYCIA.\n\n";
     //std::cout << "CO CHCESZ ZROBIC, GRACZU?\n";
-    //std::cout << "[1] - CHCE ZARYZYKOWAC WSZYSTKO, ZEBY ZDOBYC NIESKONCZENIE WIELE PIENIEDZY GRAJAC W GRE POKER.\n[2] - SPENIALEM. ZABIERZCIE MNIE STAD, DOPOKI JESZCZE MAM JAKIES PIENIADZE...";
+    //std::cout << "[1] - CHCE ZARYZYKOWAC WSZYSTKO, ZEBY ZDOBYC NIESKONCZENIE WIELE PIENIEDZY GRAJAC W GRE POKER.\n[2] - SPENIALEM. ZABIERZCIE MNIE STAD, DOPOKI JESZCZE MAM JAKIES PIENIADZE
     Game game = Game(1000);
     game.definePlayers();
     game.run();
-
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
