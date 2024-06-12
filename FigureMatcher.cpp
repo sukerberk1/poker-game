@@ -62,7 +62,18 @@ class StraightMatcher : public FigureMatcher {
 
 class FlushMatcher : public FigureMatcher {
     bool doesFigureExist(std::array<Card, 7> allCards) {
-        // TODO!
+        int counts[4] = { 0 };
+        for (auto card : allCards) {
+            switch (card.getColor()) {
+            case 'S': counts[0]++; break;
+            case 'H': counts[1]++; break;
+            case 'D': counts[2]++; break;
+            case 'C': counts[3]++; break;
+            }
+        }
+        for (int i = 0; i < 4; i++) {
+            if (counts[i] >= 5) return true;
+        }
         return false;
     }
 };
