@@ -42,7 +42,13 @@ class DoublePairMatcher : public FigureMatcher {
 
 class ThreeOfAKindMatcher : public FigureMatcher {
     bool doesFigureExist(std::array<Card, 7> allCards) {
-        // TODO!
+        int counts[15] = { 0 };
+        for (auto card : allCards) {
+            counts[card.getPower()]++;
+        }
+        for (int i = 0; i < 15; i++) {
+            if (counts[i] == 3) return true;
+        }
         return false;
     }
 };
