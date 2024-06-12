@@ -62,7 +62,20 @@ class ThreeOfAKindMatcher : public FigureMatcher {
 
 class StraightMatcher : public FigureMatcher {
     bool doesFigureExist(std::array<Card, 7> allCards) {
-        // TODO!
+        bool cardPresent[15] = { false };
+        for (auto card : allCards) {
+            cardPresent[card.getPower()] = true;
+        }
+        int consecutive = 0;
+        for (int i = 2; i <= 14; i++) {
+            if (cardPresent[i]) {
+                consecutive++;
+                if (consecutive == 5) return true;
+            }
+            else {
+                consecutive = 0;
+            }
+        }
         return false;
     }
 };
