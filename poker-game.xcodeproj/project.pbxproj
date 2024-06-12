@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AFC2EA182C1A229E0011D39F /* BettingCycle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AFC2EA0D2C1A229E0011D39F /* BettingCycle.cpp */; };
+		AFC2EA192C1A229E0011D39F /* Display.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AFC2EA122C1A229E0011D39F /* Display.cpp */; };
+		AFC2EA1A2C1A229E0011D39F /* FigureMatcher.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AFC2EA152C1A229E0011D39F /* FigureMatcher.cpp */; };
 		AFF8A9DB2BC84C9D009743B4 /* roundResolver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AFF8A9CB2BC84C9D009743B4 /* roundResolver.cpp */; };
 		AFF8A9DC2BC84C9D009743B4 /* player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AFF8A9CC2BC84C9D009743B4 /* player.cpp */; };
 		AFF8A9DD2BC84C9D009743B4 /* cycle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = AFF8A9CF2BC84C9D009743B4 /* cycle.cpp */; };
@@ -31,6 +34,18 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		AFC2EA0C2C1A229E0011D39F /* Deck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Deck.h; sourceTree = "<group>"; };
+		AFC2EA0D2C1A229E0011D39F /* BettingCycle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BettingCycle.cpp; sourceTree = "<group>"; };
+		AFC2EA0E2C1A229E0011D39F /* Display.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Display.h; sourceTree = "<group>"; };
+		AFC2EA0F2C1A229E0011D39F /* Card.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Card.h; sourceTree = "<group>"; };
+		AFC2EA102C1A229E0011D39F /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
+		AFC2EA112C1A229E0011D39F /* BettingCycle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BettingCycle.h; sourceTree = "<group>"; };
+		AFC2EA122C1A229E0011D39F /* Display.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Display.cpp; sourceTree = "<group>"; };
+		AFC2EA132C1A229E0011D39F /* Game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Game.h; sourceTree = "<group>"; };
+		AFC2EA142C1A229E0011D39F /* FigureMatcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FigureMatcher.h; sourceTree = "<group>"; };
+		AFC2EA152C1A229E0011D39F /* FigureMatcher.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FigureMatcher.cpp; sourceTree = "<group>"; };
+		AFC2EA162C1A229E0011D39F /* Round.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Round.h; sourceTree = "<group>"; };
+		AFC2EA172C1A229E0011D39F /* RoundResolver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoundResolver.h; sourceTree = "<group>"; };
 		AFF8A9C12BC84A87009743B4 /* poker-game */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "poker-game"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFF8A9CB2BC84C9D009743B4 /* roundResolver.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = roundResolver.cpp; sourceTree = "<group>"; };
 		AFF8A9CC2BC84C9D009743B4 /* player.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = player.cpp; sourceTree = "<group>"; };
@@ -61,6 +76,18 @@
 		AFF8A9B82BC84A87009743B4 = {
 			isa = PBXGroup;
 			children = (
+				AFC2EA0D2C1A229E0011D39F /* BettingCycle.cpp */,
+				AFC2EA112C1A229E0011D39F /* BettingCycle.h */,
+				AFC2EA0F2C1A229E0011D39F /* Card.h */,
+				AFC2EA0C2C1A229E0011D39F /* Deck.h */,
+				AFC2EA122C1A229E0011D39F /* Display.cpp */,
+				AFC2EA0E2C1A229E0011D39F /* Display.h */,
+				AFC2EA152C1A229E0011D39F /* FigureMatcher.cpp */,
+				AFC2EA142C1A229E0011D39F /* FigureMatcher.h */,
+				AFC2EA132C1A229E0011D39F /* Game.h */,
+				AFC2EA102C1A229E0011D39F /* Player.h */,
+				AFC2EA162C1A229E0011D39F /* Round.h */,
+				AFC2EA172C1A229E0011D39F /* RoundResolver.h */,
 				AFF8A9DA2BC84C9D009743B4 /* card.cpp */,
 				AFF8A9CF2BC84C9D009743B4 /* cycle.cpp */,
 				AFF8A9D92BC84C9D009743B4 /* deck.cpp */,
@@ -162,12 +189,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AFC2EA182C1A229E0011D39F /* BettingCycle.cpp in Sources */,
 				AFF8A9DF2BC84C9D009743B4 /* round.cpp in Sources */,
 				AFF8A9DB2BC84C9D009743B4 /* roundResolver.cpp in Sources */,
 				AFF8A9E22BC84C9D009743B4 /* deck.cpp in Sources */,
+				AFC2EA192C1A229E0011D39F /* Display.cpp in Sources */,
 				AFF8A9E32BC84C9D009743B4 /* card.cpp in Sources */,
 				AFF8A9E02BC84C9D009743B4 /* game.cpp in Sources */,
 				AFF8A9DD2BC84C9D009743B4 /* cycle.cpp in Sources */,
+				AFC2EA1A2C1A229E0011D39F /* FigureMatcher.cpp in Sources */,
 				AFF8A9DE2BC84C9D009743B4 /* main.cpp in Sources */,
 				AFF8A9E12BC84C9D009743B4 /* main.cpp in Sources */,
 				AFF8A9DC2BC84C9D009743B4 /* player.cpp in Sources */,
