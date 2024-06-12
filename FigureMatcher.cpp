@@ -102,11 +102,30 @@ class FourOfAKindMatcher : public FigureMatcher {
 
 class StraightFlushMatcher : public FigureMatcher {
     bool doesFigureExist(std::array<Card, 7> allCards) {
-        // TODO!
+        bool suits[4][15] = { {false} };
+        for (auto card : allCards) {
+            switch (card.getColor()) {
+            case 'S': suits[0][card.getPower()] = true; break;
+            case 'H': suits[1][card.getPower()] = true; break;
+            case 'D': suits[2][card.getPower()] = true; break;
+            case 'C': suits[3][card.getPower()] = true; break;
+            }
+        }
+        for (int s = 0; s < 4; s++) {
+            int consecutive = 0;
+            for (int i = 2; i <= 14; i++) {
+                if (suits[s][i]) {
+                    consecutive++;
+                    if (consecutive == 5) return true;
+                }
+                else {
+                    consecutive = 0;
+                }
+            }
+        }
         return false;
     }
 };
-
 class RoyalFlushMatcher : public FigureMatcher {
     bool doesFigureExist(std::array<Card, 7> allCards) {
         // TODO!
