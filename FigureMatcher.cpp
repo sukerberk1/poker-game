@@ -19,7 +19,7 @@ bool FigureMatcher::doesMatch(std::array<Card, 5> tableCards, std::array<Card, 2
     }
     return doesFigureExist(allCards);
 }
-
+/*Checks for pairs*/
 class PairMatcher : public FigureMatcher {
     bool doesFigureExist(std::array<Card, 7> allCards) {
         int counts[15] = { 0 };
@@ -32,7 +32,7 @@ class PairMatcher : public FigureMatcher {
         return false;
     }
 };
-
+/*Checks for double pairs*/
 class DoublePairMatcher : public FigureMatcher {
     bool doesFigureExist(std::array<Card, 7> allCards) {
         int counts[15] = { 0 };
@@ -46,7 +46,7 @@ class DoublePairMatcher : public FigureMatcher {
         return pairCount >= 2;
     }
 };
-
+/*Checks for three of a kind*/
 class ThreeOfAKindMatcher : public FigureMatcher {
     bool doesFigureExist(std::array<Card, 7> allCards) {
         int counts[15] = { 0 };
@@ -59,7 +59,7 @@ class ThreeOfAKindMatcher : public FigureMatcher {
         return false;
     }
 };
-
+/*Checks for a straight*/
 class StraightMatcher : public FigureMatcher {
     bool doesFigureExist(std::array<Card, 7> allCards) {
         bool cardPresent[15] = { false };
@@ -79,7 +79,7 @@ class StraightMatcher : public FigureMatcher {
         return false;
     }
 };
-
+/*Checks for a flush*/
 class FlushMatcher : public FigureMatcher {
     bool doesFigureExist(std::array<Card, 7> allCards) {
         int counts[4] = { 0 };
@@ -97,7 +97,7 @@ class FlushMatcher : public FigureMatcher {
         return false;
     }
 };
-
+/*Checks for a full house*/
 class FullHouseMatcher : public FigureMatcher {
     bool doesFigureExist(std::array<Card, 7> allCards) {
         int counts[15] = { 0 };
@@ -112,7 +112,7 @@ class FullHouseMatcher : public FigureMatcher {
         return hasThree && hasTwo;
     }
 };
-
+/*Checks for a four of a kind*/
 class FourOfAKindMatcher : public FigureMatcher {
     bool doesFigureExist(std::array<Card, 7> allCards) {
         int counts[15] = { 0 };
@@ -125,7 +125,7 @@ class FourOfAKindMatcher : public FigureMatcher {
         return false;
     }
 };
-
+/*Checks for a staight flush*/
 class StraightFlushMatcher : public FigureMatcher {
     bool doesFigureExist(std::array<Card, 7> allCards) {
         bool suits[4][15] = { {false} };
@@ -152,6 +152,7 @@ class StraightFlushMatcher : public FigureMatcher {
         return false;
     }
 };
+/*Checks for a royal flush*/
 class RoyalFlushMatcher : public FigureMatcher {
     bool doesFigureExist(std::array<Card, 7> allCards) {
         bool suits[4][15] = { {false} };
