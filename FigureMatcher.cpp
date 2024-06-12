@@ -154,7 +154,20 @@ class StraightFlushMatcher : public FigureMatcher {
 };
 class RoyalFlushMatcher : public FigureMatcher {
     bool doesFigureExist(std::array<Card, 7> allCards) {
-        // TODO!
+        bool suits[4][15] = { {false} };
+        for (auto card : allCards) {
+            switch (card.getColor()) {
+            case 'S': suits[0][card.getPower()] = true; break;
+            case 'H': suits[1][card.getPower()] = true; break;
+            case 'D': suits[2][card.getPower()] = true; break;
+            case 'C': suits[3][card.getPower()] = true; break;
+            }
+        }
+        for (int s = 0; s < 4; s++) {
+            if (suits[s][10] && suits[s][11] && suits[s][12] && suits[s][13] && suits[s][14]) {
+                return true;
+            }
+        }
         return false;
     }
 };
