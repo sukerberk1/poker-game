@@ -80,8 +80,16 @@ class FlushMatcher : public FigureMatcher {
 
 class FullHouseMatcher : public FigureMatcher {
     bool doesFigureExist(std::array<Card, 7> allCards) {
-        // TODO!
-        return false;
+        int counts[15] = { 0 };
+        bool hasThree = false, hasTwo = false;
+        for (auto card : allCards) {
+            counts[card.getPower()]++;
+        }
+        for (int i = 0; i < 15; i++) {
+            if (counts[i] == 3) hasThree = true;
+            if (counts[i] == 2) hasTwo = true;
+        }
+        return hasThree && hasTwo;
     }
 };
 
