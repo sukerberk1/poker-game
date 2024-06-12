@@ -35,8 +35,15 @@ class PairMatcher : public FigureMatcher {
 
 class DoublePairMatcher : public FigureMatcher {
     bool doesFigureExist(std::array<Card, 7> allCards) {
-        // TODO!
-        return false;
+        int counts[15] = { 0 };
+        int pairCount = 0;
+        for (auto card : allCards) {
+            counts[card.getPower()]++;
+        }
+        for (int i = 0; i < 15; i++) {
+            if (counts[i] == 2) pairCount++;
+        }
+        return pairCount >= 2;
     }
 };
 
