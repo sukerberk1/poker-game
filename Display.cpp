@@ -1,12 +1,6 @@
 #include "Display.h"
 #include <iostream>
 #include <cstdlib>
-#include <stdio.h>
-#include <conio.h> //! Linux does not work with that
-
-#define KEY_UP    72
-#define KEY_DOWN  80
-#define KEY_ENTER 13
 
 
 void Display::clear()
@@ -20,30 +14,26 @@ void Display::clear()
 
 void Display::awaitAcknowledge()
 {
-    getchar();
+    std::cin.ignore();
 }
 
 std::string Display::optionChoiceInterface(std::vector<std::string> options, int& chosenIdx)
 {
-    std::cout << "[Choose your option using arrows and enter keys]" << std::endl;
+    std::cout << "[Choose your option by chosing its number and entering 0 to forward]" << std::endl;
     for (int i = 0; i < options.size(); i++) {
         if (i == chosenIdx) {
             std::cout << "->";
         }
-        std::cout << options[i] << std::endl;
+        std::cout << "[" << i+1 << "]" << options[i] << std::endl;
     }
     std::string nextChoice;
-    switch (_getch())
-    {
-    case KEY_ENTER:
+    int idxInput = 0;
+    std::cin >> idxInput;
+    if (idxInput < 1 || idxInput > options.size())
         return options[chosenIdx];
-    case KEY_UP:
-        chosenIdx = chosenIdx == 0 ? options.size() - 1 : chosenIdx - 1;
-        break;
-    case KEY_DOWN:
-        chosenIdx = chosenIdx == options.size() - 1 ? 0 : chosenIdx + 1;
-        break;
-    }
+    else 
+
+        chosenIdx = idxInput-1; 
     return "";
 }
 
