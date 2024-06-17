@@ -1,7 +1,7 @@
-#include "Round.h"
-#include "BettingCycle.h"
-#include "FigureMatcher.h"
-#include "Display.h"
+#include "../include/Round.h"
+#include "../include/BettingCycle.h"
+#include "../include/FigureMatcher.h"
+#include "../include/Display.h"
 
 Round::Round(std::vector<Player*> players) 
 	: tableCards({ Card::PLACEHOLDER(), Card::PLACEHOLDER(), Card::PLACEHOLDER(), Card::PLACEHOLDER(), Card::PLACEHOLDER() }) 

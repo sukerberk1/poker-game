@@ -1,5 +1,5 @@
-#include "FigureMatcher.h"
-#include "Card.h"
+#include "../include/FigureMatcher.h"
+#include "../include/Card.h"
 #include <array>
 
 bool FigureMatcher::doesFigureExist(std::array<Card, 7> allCards)

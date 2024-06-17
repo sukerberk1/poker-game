@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 #include <algorithm>
-#include "Card.h"
+#include "../include/Card.h"
 
 Card::Card(int power, char color) {
 	if (isColorValid(color) && isPowerValid(power)) {

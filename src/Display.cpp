@@ -1,4 +1,4 @@
-#include "Display.h"
+#include "../include/Display.h"
 #include <iostream>
 #include <cstdlib>
 

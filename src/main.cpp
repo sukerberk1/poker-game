@@ -2,9 +2,9 @@
 //
 
 #include <iostream>
-#include "Game.h"
+#include "../include/Game.h"
 #include <string>
-#include "FigureMatcher.h"
+#include "../include/FigureMatcher.h"
 #include <stdio.h>
 
 int main()

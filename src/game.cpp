@@ -1,8 +1,8 @@
-#include "Game.h"
+#include "../include/Game.h"
 #include <iostream>
 #include <string>
-#include "Round.h"
-#include "Display.h"
+#include "../include/Round.h"
+#include "../include/Display.h"
 
 Game::Game(int initialCash) : 
 	playersArr(nullptr), 

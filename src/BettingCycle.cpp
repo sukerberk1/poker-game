@@ -1,5 +1,5 @@
-﻿#include "BettingCycle.h"
-#include "Display.h"
+#include "../include/BettingCycle.h"
+#include "../include/Display.h"
 
 Bet::Bet(Player* player) {
 	this->player = player;
