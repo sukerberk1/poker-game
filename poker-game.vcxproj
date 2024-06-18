@@ -128,25 +128,25 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Card.cpp" />
-    <ClCompile Include="BettingCycle.cpp" />
-    <ClCompile Include="Deck.cpp" />
-    <ClCompile Include="Display.cpp" />
-    <ClCompile Include="FigureMatcher.cpp" />
-    <ClCompile Include="Game.cpp" />
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="Player.cpp" />
-    <ClCompile Include="Round.cpp" />
+    <ClCompile Include="src\BettingCycle.cpp" />
+    <ClCompile Include="src\card.cpp" />
+    <ClCompile Include="src\deck.cpp" />
+    <ClCompile Include="src\Display.cpp" />
+    <ClCompile Include="src\FigureMatcher.cpp" />
+    <ClCompile Include="src\game.cpp" />
+    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\player.cpp" />
+    <ClCompile Include="src\round.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Card.h" />
-    <ClInclude Include="BettingCycle.h" />
-    <ClInclude Include="Deck.h" />
-    <ClInclude Include="Display.h" />
-    <ClInclude Include="FigureMatcher.h" />
-    <ClInclude Include="Game.h" />
-    <ClInclude Include="Player.h" />
-    <ClInclude Include="Round.h" />
+    <ClInclude Include="include\BettingCycle.h" />
+    <ClInclude Include="include\Card.h" />
+    <ClInclude Include="include\Deck.h" />
+    <ClInclude Include="include\Display.h" />
+    <ClInclude Include="include\FigureMatcher.h" />
+    <ClInclude Include="include\Game.h" />
+    <ClInclude Include="include\Player.h" />
+    <ClInclude Include="include\Round.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
